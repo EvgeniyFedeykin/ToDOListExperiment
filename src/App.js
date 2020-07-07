@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import './index.css'
 
-import Warhammerportal from './WarhammerPortal.js'
+import InputField from "../src/Interface/LoginBlock/CommonComponents/LoginBlockInputField/InputField";
+import LoginBlockLogo from "../src/Interface/LoginBlock/CommonComponents/LoginBlockLogo/LoginBlockLogo";
+
 
 class Application extends Component {
     render() {
         return (
             <div className = "MainClass">
-                <Warhammerportal />
+                <LoginBlockLogo />
             </div>
         )
     }
