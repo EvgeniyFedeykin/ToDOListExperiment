@@ -5,6 +5,7 @@ import { Provider } from 'react-redux'
 import Application from './App.js'
 import rootSaga from './Sagas/Sagas.js'
 import configureStore from './store/configureStore'
+//import "../src/Interface/bootstrap.css";
 
 const store = configureStore()
 
