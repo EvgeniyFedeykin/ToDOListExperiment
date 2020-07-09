@@ -10,7 +10,9 @@ function TermsOfUse() {
     return (
         <div className = "LoginPage LoginBlockTermsOfUse">
             <div className = "LoginBlockTermsOfUseHeader">
-                <Link to = "/login"><img src = {leftArrow} alt = "back"/></Link>
+                <Link to = "/login">
+                    <img src = {leftArrow} alt = "back"/>
+                </Link>
                 <h2 className = "LoginBlockTermsOfUseHeading">Terms conditions</h2>
             </div>
             <p className = "LoginBlockParagraph">

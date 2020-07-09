@@ -2,7 +2,7 @@
     left:0;
     top:0;
     width: 44%;
-    height:100%;
+    height:inherit;
     background: transparent url('../../../../Data/Images/LoginBlockBackground.png') 0% 0% no-repeat padding-box;
     background-size: cover;
     opacity: 1;

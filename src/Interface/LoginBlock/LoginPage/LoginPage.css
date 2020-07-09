@@ -3,8 +3,8 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    height: 100%;
-    width: 57%;
+    height: inherit;
+    width: 56%;
     overflow: auto;
 }
 
@@ -108,22 +108,27 @@
 }
 
 .LoginBlockTermsOfUse {
-    padding: 25px;
+    overflow: auto;
+    width: 55%;
+    height: inherit;
     overflow: auto;
 }
 
 .LoginBlockTermsOfUseHeader {
-    width: 100%;
+    width: 90%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
+    margin-left: 25px;
+    margin-right: 25px;
 }
 .LoginBlockTermsOfUseHeading {
     align-self: space-around;
     flex-grow: 5;
     text-align: center;
+    width: 100%;
 }
 
 .LoginBlockOffHeading {
@@ -132,6 +137,13 @@
 }
 
 .LoginBlockParagraph {
-    font-size: 16px;
-    font-style: SF Pro Text;
+    width: 90%;
+    text-align: left;
+    font: Regular 15px/22px SF Pro Text;
+    letter-spacing: 0.15px;
+    color: #1F1C1C;
+    opacity: 1;
+    margin-left: 25px;
+    margin-right: 25px;
+    white-space: pre-wrap;
 }

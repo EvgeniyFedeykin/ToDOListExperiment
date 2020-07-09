@@ -32,5 +32,6 @@ html {
     position: fixed;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: stretch;
+    align-items: stretch;
   }
