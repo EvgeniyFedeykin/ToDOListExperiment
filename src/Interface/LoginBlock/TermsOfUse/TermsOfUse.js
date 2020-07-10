@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 
-import "../LoginPage/LoginPage.css";
+//import "../LoginPage/LoginPage.css";
 
 import leftArrow from "../../../Data/Images/ic_arrow_left.png";
 

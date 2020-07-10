@@ -6,25 +6,25 @@ import LoginBLockPasswordField from "../CommonComponents/LoginBlockInputFields/P
 import LoginBLockEmailField from "../CommonComponents/LoginBlockInputFields/EmailField";
 import TermsOfUseFooter from "../CommonComponents/TermsOfUseFooter/TermsOfUseFooter";
 
-class LoginPage extends Component {
+class SignUpPage extends Component {
     constructor(props) {
         super(props);
     }
     render() {
         return(
             <div className = "LoginPage">
-                <h3 className = "LoginBlockHeader">Sign In</h3>
+                <h3 className = "LoginBlockHeader">Sign Up</h3>
                 <div className = "LoginBlockInputBlock">
                     <LoginBLockEmailField />
                     <LoginBLockPasswordField placeholderText = "Password" />
+                    <LoginBLockPasswordField placeholderText = "Confirm Password" />
                 </div>
-                <Link to = "/forgot_password" className = "LoginBlockLink">Forgot password</Link>
-                <button className = "LoginButton">Sign In</button>
-                <Link to = "/sign_up" className = "LoginBlockLink">Sign Up</Link>
+                <button className = "LoginButton">Sign Up</button>
+                <span>I already have an account. <Link to = "/login"  className = "LoginBlockLink">Sign in</Link></span>
                 <TermsOfUseFooter />
             </div>
         )
     }
 }
 
-export default LoginPage;
+export default SignUpPage;

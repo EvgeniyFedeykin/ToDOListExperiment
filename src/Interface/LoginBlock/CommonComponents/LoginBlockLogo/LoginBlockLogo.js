@@ -1,5 +1,5 @@
 import React from 'react';
-import "./LoginBlockLogo.css";
+//import "./LoginBlockLogo.css";
 
 import Logo from "../../../../Data/Images/LoginBlockLogo.svg";
 
