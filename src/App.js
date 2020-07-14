@@ -6,10 +6,14 @@ import {
     Link,
     Redirect
   } from "react-router-dom";
+  import { connect } from 'react-redux';
 
 import './index.css';
 import "../src/Interface/CSS/LoginBlockLogo.css";
 import "../src/Interface/CSS/LoginPage.css";
+
+
+import * as actionCreators from "../src/Store/ActionCreators";
 
 //import InputField from "../src/Interface/LoginBlock/CommonComponents/LoginBlockInputField/InputField";
 import LoginBlockLogo from "../src/Interface/LoginBlock/CommonComponents/LoginBlockLogo/LoginBlockLogo";

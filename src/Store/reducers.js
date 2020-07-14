@@ -5,12 +5,22 @@ const _ = require('lodash');
 
 const Reducers = combineReducers(
     {
-        placeHolderForReducers                  
+        RoutePath                  
     }
 );
 
-function placeHolderForReducers(state = "test", action) {
-    return state;
-}
 
 export default Reducers;
+
+
+function RoutePath(state = "/sign_up", action) {
+    console.log(state);
+    switch(action.type) {
+        case "setRoutePath":
+            console.log("in reducer " + action.path);
+            return action.path;
+        default:
+            console.log("in reducer " + state);
+            return state;
+    }
+}
