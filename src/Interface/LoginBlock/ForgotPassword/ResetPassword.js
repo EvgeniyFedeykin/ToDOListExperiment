@@ -19,7 +19,7 @@ class ResetPassword extends Component {
     }
 
     setRoutePath = (e) => {
-        this.props.setPath(e.target.dataset.path);
+        this.props.setPath(e.target.dataset.path, this.props.path);
     }
 
     render() {
@@ -27,7 +27,7 @@ class ResetPassword extends Component {
             <div className = "LoginPage">
                 {(this.path != this.props.path) ? <Redirect to = {this.props.path} /> : <span />}   
                 <a className = "LoginBlockTermsOfUseHeader LoginBlockBackArrow">
-                    <img src = {leftArrow} alt = "back" data-path = "/forgot_password" onClick = {this.setRoutePath}/>
+                    <img src = {leftArrow} alt = "back" data-path = { this.props.previousPath } onClick = {this.setRoutePath}/>
                 </a>
                 <h3 className = "LoginBlockHeader">Forgot Password</h3>
                 <p className = "LoginBlockTermsBlock">Reset code was sent to your Email. Please enter the code and create new password</p>
@@ -44,13 +44,14 @@ class ResetPassword extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        path: state.RoutePath
+        path: state.RoutePath.path,
+        previousPath: state.RoutePath.previousPath
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-       setPath: (path) => dispatch(actionCreators.setRoutePath(path))
+       setPath: (path, previousPath) => dispatch(actionCreators.setRoutePath(path, previousPath))
     }
 }
 

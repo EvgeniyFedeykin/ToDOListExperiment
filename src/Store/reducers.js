@@ -13,11 +13,14 @@ const Reducers = combineReducers(
 export default Reducers;
 
 
-function RoutePath(state = "/login", action) {
+function RoutePath(state = { path: "/login", previousPath: "/login" }, action) {
     console.log(action.path);
     switch(action.type) {
         case "setRoutePath":
-            return action.path;
+            return { 
+                path: action.path,
+                previousPath: action.previousPath
+            };
         default:
             return state;
     }

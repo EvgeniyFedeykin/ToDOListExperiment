@@ -18,7 +18,7 @@ class SignUpPage extends Component {
     }
 
     setRoutePath = (e) => {
-        this.props.setPath(e.target.dataset.path);
+        this.props.setPath(e.target.dataset.path, this.props.path);
     }
 
     render() {
@@ -33,7 +33,7 @@ class SignUpPage extends Component {
                 </div>
                 <button className = "LoginButton" data-path = "/login" onClick = {this.setRoutePath}>Sign Up</button>
                 <span>I already have an account. <a data-path = "/login"  onClick = {this.setRoutePath} className = "LoginBlockLink">Sign in</a></span>
-                <TermsOfUseFooter setRoutePath = {this.props.setRoutePath}/>
+                <TermsOfUseFooter setRoutePath = {this.setRoutePath}/>
             </div>
         )
     }
@@ -41,13 +41,14 @@ class SignUpPage extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        path: state.RoutePath
+        path: state.RoutePath.path,
+        previousPath: state.RoutePath.previousPath
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-       setPath: (path) => dispatch(actionCreators.setRoutePath(path))
+       setPath: (path, previousPath) => dispatch(actionCreators.setRoutePath(path, previousPath))
     }
 }
 

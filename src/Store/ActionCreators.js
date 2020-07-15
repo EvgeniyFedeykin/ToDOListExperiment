@@ -1,6 +1,7 @@
-export function setRoutePath(path) {
+export function setRoutePath(path, previousPath) {
     return {
         type: "setRoutePath",
-        path: path
+        path,
+        previousPath
     }
 }

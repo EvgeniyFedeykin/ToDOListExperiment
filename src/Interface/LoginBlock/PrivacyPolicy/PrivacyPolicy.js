@@ -19,17 +19,17 @@ class PrivacyPolicy extends Component  {
     }
 
     setRoutePath = (e) => {
-        this.props.setPath(e.target.dataset.path);
+        this.props.setPath(e.target.dataset.path, this.props.path);
     }
         render() {
             return (
                 <div className = "LoginPage LoginBlockTermsOfUse">
                     {(this.path != this.props.path) ? <Redirect to = {this.props.path} /> : <span />}
                     <div className = "LoginBlockTermsOfUseHeader">
-                        <a data-path = {this.props.previousPath} onClick = {this.setRoutePath}>
-                            <img src = {leftArrow} alt = "back"/>
+                        <a>
+                            <img src = {leftArrow} alt = "back"  data-path = {this.props.previousPath} onClick = {this.setRoutePath}/>
                         </a>
-                        <h2 className = "LoginBlockTermsOfUseHeading">Terms conditions</h2>
+                        <h2 className = "LoginBlockTermsOfUseHeading">Privacy Policy</h2>
                     </div>
                     <p className = "LoginBlockParagraph">
                     My Company (change this) («us», «we», or «our») operates http://www.mysite.com (change this) (the «Site»). This page informs you of our policies regarding the collection, use and disclosure of Personal Information we receive from users of the Site. We use your Personal Information only for providing and improving the Site. By using the Site, you agree to the collection and use of information in accordance with this policy.
@@ -49,13 +49,14 @@ class PrivacyPolicy extends Component  {
 
 const mapStateToProps = (state) => {
     return {
-        path: state.RoutePath
+        path: state.RoutePath.path,
+        previousPath: state.RoutePath.previousPath
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-       setPath: (path) => dispatch(actionCreators.setRoutePath(path))
+       setPath: (path, previousPath) => dispatch(actionCreators.setRoutePath(path, previousPath))
     }
 }
 

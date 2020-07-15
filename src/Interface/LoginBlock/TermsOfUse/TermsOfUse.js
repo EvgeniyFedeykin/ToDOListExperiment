@@ -19,7 +19,7 @@ class TermsOfUse extends Component  {
     }
 
     setRoutePath = (e) => {
-        this.props.setPath(e.target.dataset.path);
+        this.props.setPath(e.target.dataset.path, this.props.path);
     }
 
     render() {
@@ -28,7 +28,7 @@ class TermsOfUse extends Component  {
                 {(this.path != this.props.path) ? <Redirect to = {this.props.path} /> : <span />}
                 <div className = "LoginBlockTermsOfUseHeader">
                     <span>
-                        <img src = {leftArrow} alt = "back" data-path = "/login" onClick = {this.setRoutePath}/>
+                        <img src = {leftArrow} alt = "back" data-path = {this.props.previousPath} onClick = {this.setRoutePath}/>
                     </span>
                     <h2 className = "LoginBlockTermsOfUseHeading">Terms conditions</h2>
                 </div>
@@ -50,13 +50,14 @@ class TermsOfUse extends Component  {
 
 const mapStateToProps = (state) => {
     return {
-        path: state.RoutePath
+        path: state.RoutePath.path,
+        previousPath: state.RoutePath.previousPath
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-       setPath: (path) => dispatch(actionCreators.setRoutePath(path))
+       setPath: (path, previousPath) => dispatch(actionCreators.setRoutePath(path, previousPath))
     }
 }
 

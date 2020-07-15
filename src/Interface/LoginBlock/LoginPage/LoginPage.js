@@ -20,7 +20,7 @@ class LoginPage extends Component {
     setRoutePath = (e) => {
         console.log(e.target.dataset.path);
         console.log(this.path != this.props.path);
-        this.props.setPath(e.target.dataset.path);
+        this.props.setPath(e.target.dataset.path, this.props.path);
     }
 
     render() {
@@ -44,13 +44,14 @@ class LoginPage extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        path: state.RoutePath
+        path: state.RoutePath.path,
+        previousPath: state.RoutePath.previousPath
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-       setPath: (path) => dispatch(actionCreators.setRoutePath(path))
+       setPath: (path, previousPath) => dispatch(actionCreators.setRoutePath(path, previousPath))
     }
 }
 

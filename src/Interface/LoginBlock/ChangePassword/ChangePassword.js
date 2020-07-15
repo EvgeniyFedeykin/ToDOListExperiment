@@ -17,7 +17,7 @@ class ChangePassword extends Component {
     }
 
     setRoutePath = (e) => {
-        this.props.setPath(e.target.dataset.path);
+        this.props.setPath(e.target.dataset.path, this.props.path);
     }
 
     render() {
@@ -25,7 +25,7 @@ class ChangePassword extends Component {
             <div className = "LoginPage">
                 {(this.path != this.props.path) ? <Redirect to = {this.props.path} /> : <span />}
                 <a className = "LoginBlockTermsOfUseHeader LoginBlockBackArrow">
-                    <img src = {leftArrow} alt = "back" data-path = "/login"  onClick = {this.props.setRoutePath}/>
+                    <img src = {leftArrow} alt = "back" data-path = { this.props.previousPath }  onClick = {this.props.setRoutePath}/>
                 </a>
                 <h3 className = "LoginBlockHeader" data-path = "/login"  onClick = {this.props.setRoutePath}>Change Password</h3>
                 <div className = "LoginBlockInputBlock">
@@ -41,13 +41,14 @@ class ChangePassword extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        path: state.RoutePath
+        path: state.RoutePath.path,
+        previousPath: state.RoutePath.previousPath
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-       setPath: (path) => dispatch(actionCreators.setRoutePath(path))
+       setPath: (path, previousPath) => dispatch(actionCreators.setRoutePath(path, previousPath))
     }
 }
 
