@@ -13,14 +13,12 @@ const Reducers = combineReducers(
 export default Reducers;
 
 
-function RoutePath(state = "/sign_up", action) {
-    console.log(state);
+function RoutePath(state = "/login", action) {
+    console.log(action.path);
     switch(action.type) {
         case "setRoutePath":
-            console.log("in reducer " + action.path);
             return action.path;
         default:
-            console.log("in reducer " + state);
             return state;
     }
 }

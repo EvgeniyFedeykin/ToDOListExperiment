@@ -15,7 +15,6 @@ import "../src/Interface/CSS/LoginPage.css";
 
 import * as actionCreators from "../src/Store/ActionCreators";
 
-//import InputField from "../src/Interface/LoginBlock/CommonComponents/LoginBlockInputField/InputField";
 import LoginBlockLogo from "../src/Interface/LoginBlock/CommonComponents/LoginBlockLogo/LoginBlockLogo";
 import LoginPage from "../src/Interface/LoginBlock/LoginPage/LoginPage";
 import SignUpPage from "../src/Interface/LoginBlock/SignUpPage/SignUpPage";
@@ -24,17 +23,25 @@ import ChangePassword from "../src/Interface/LoginBlock/ChangePassword/ChangePas
 import ForgotPassword from "../src/Interface/LoginBlock/ForgotPassword/ForgotPassword";
 import ResetPassword from "../src/Interface/LoginBlock/ForgotPassword/ResetPassword";
 import PrivacyPolicy from "../src/Interface/LoginBlock/PrivacyPolicy/PrivacyPolicy";
+import { ThemeConsumer } from 'react-bootstrap/esm/ThemeProvider';
 
 
 
 class Application extends Component {
+    constructor(props) {
+        super(props);
+        this.isLogged = false;
+        (this.isLogged) ? this.props.setPath("/terms_of_use") : this.props.setPath("/login");
+    }
+
+
     render() {
-        const isLogged = false;
+        //{(isLogged) ? this.props.setPath("/terms_of_use") : this.props.setPath("/login")}
         return (
             <Router >
                 <Switch>
                     <Route exact path = "/">
-                        <Redirect to = {(isLogged) ? "/terms_of_use" : "/login"} />
+                        <Redirect to = {this.props.path} />
                     </Route>
                     <Route path = "/login">
                         <div className = "MainClass">
@@ -45,37 +52,37 @@ class Application extends Component {
                     <Route path = "/sign_up">
                         <div className = "MainClass">
                             <LoginBlockLogo />
-                            <SignUpPage />
+                            <SignUpPage/>
                         </div>
                     </Route>
                     <Route path = "/change_password">
                         <div className = "MainClass">
                             <LoginBlockLogo />
-                            <ChangePassword />
+                            <ChangePassword/>
                         </div>
                     </Route>
                     <Route path = "/forgot_password">
                         <div className = "MainClass">
                             <LoginBlockLogo />
-                            <ForgotPassword />
+                            <ForgotPassword/>
                         </div>
                     </Route>
                     <Route path = "/reset_password">
                         <div className = "MainClass">
                             <LoginBlockLogo />
-                            <ResetPassword />
+                            <ResetPassword/>
                         </div>
                     </Route>
                     <Route path = "/terms_of_use">
                         <div className = "MainClass">
                             <LoginBlockLogo />
-                            <TermsOfUse />
+                            <TermsOfUse previousPath = {this.props.path}/>
                         </div>
                     </Route>
                     <Route path = "/privacy_policy">
                         <div className = "MainClass">
                             <LoginBlockLogo />
-                            <PrivacyPolicy />
+                            <PrivacyPolicy previousPath = {this.props.path}/>
                         </div>
                     </Route>
                 </Switch>
@@ -84,4 +91,21 @@ class Application extends Component {
     }
 }
 
-export default Application;
+const mapStateToProps = (state) => {
+    return {
+        path: state.RoutePath
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+       setPath: (path) => dispatch(actionCreators.setRoutePath(path))
+    }
+}
+
+const containerApplication = connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Application);
+
+export default containerApplication;

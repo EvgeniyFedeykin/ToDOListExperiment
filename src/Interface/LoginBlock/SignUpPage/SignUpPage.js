@@ -22,8 +22,6 @@ class SignUpPage extends Component {
     }
 
     render() {
-        console.log(this.props);
-        console.log(this.props.path);
         return(
             <div className = "LoginPage">
                 {(this.path != this.props.path) ? <Redirect to = {this.props.path} /> : <span />}
@@ -35,7 +33,7 @@ class SignUpPage extends Component {
                 </div>
                 <button className = "LoginButton" data-path = "/login" onClick = {this.setRoutePath}>Sign Up</button>
                 <span>I already have an account. <a data-path = "/login"  onClick = {this.setRoutePath} className = "LoginBlockLink">Sign in</a></span>
-                <TermsOfUseFooter />
+                <TermsOfUseFooter setRoutePath = {this.props.setRoutePath}/>
             </div>
         )
     }
