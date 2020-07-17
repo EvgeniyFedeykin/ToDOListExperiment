@@ -12,13 +12,20 @@ class PriorityMenu extends Component {
     }
 
     selectPriority = (e) => {
-
+        this.props.selectPriority(e.target.dataset.priorityId);
     }
 
     render() {
+
+        let priorities = this.props.priorities.map((item) => 
+            <li key = {item.id} data-priorityId = {item.id} className = {"priorityButton " + (item.id == this.props.selectedId) ? "priorityButtonActive" : ""}>{item.name}</li>
+        );
         return(
-            <div>
-               
+            <div className = "priorityMenu">
+               <div className = "priorityLogo"></div>
+               <ul className = "priorityList">
+                    {priorities}
+               </ul>
             </div>
         )
     }
