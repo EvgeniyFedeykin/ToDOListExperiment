@@ -5,3 +5,18 @@ export function setRoutePath(path, previousPath) {
         previousPath
     }
 }
+
+
+export function tasksPriorities(priorities) {
+    return {
+        type: "tasksPriorities",
+        priorities
+    }
+}
+
+export function selectPriority(priorityId) {
+    return {
+        type: "selectPriority",
+        priorityId
+    }
+}
