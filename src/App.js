@@ -3,7 +3,6 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link,
     Redirect
   } from "react-router-dom";
   import { connect } from 'react-redux';
@@ -11,6 +10,7 @@ import {
 import './index.css';
 import "../src/Interface/CSS/LoginBlockLogo.css";
 import "../src/Interface/CSS/LoginPage.css";
+import "../src/Interface/CSS/TasksBlock.css";
 
 
 import * as actionCreators from "../src/Store/ActionCreators";
@@ -23,7 +23,7 @@ import ChangePassword from "../src/Interface/LoginBlock/ChangePassword/ChangePas
 import ForgotPassword from "../src/Interface/LoginBlock/ForgotPassword/ForgotPassword";
 import ResetPassword from "../src/Interface/LoginBlock/ForgotPassword/ResetPassword";
 import PrivacyPolicy from "../src/Interface/LoginBlock/PrivacyPolicy/PrivacyPolicy";
-import { ThemeConsumer } from 'react-bootstrap/esm/ThemeProvider';
+import TasksBlock from "../src/Interface/TasksBlock/TaskBlock";
 
 
 
@@ -84,6 +84,9 @@ class Application extends Component {
                             <LoginBlockLogo />
                             <PrivacyPolicy previousPath = {this.props.path}/>
                         </div>
+                    </Route>
+                    <Route path = "/tasks">
+                        <TasksBlock />
                     </Route>
                 </Switch>
             </Router>

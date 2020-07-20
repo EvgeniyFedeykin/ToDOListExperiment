@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 import * as actionCreators from "../../../Store/ActionCreators";
 
+import logo from "../../../Data/Images/ic_add.png";
+
 
 
 class PriorityMenu extends Component {
@@ -12,14 +14,15 @@ class PriorityMenu extends Component {
     }
 
     selectPriority = (e) => {
-        this.props.selectPriority(e.target.dataset.priorityId);
+        this.props.selectPriority(e.target.dataset.priorityid);
     }
 
     render() {
 
         let priorities = this.props.priorities.map((item) => 
-            <li key = {item.id} data-priorityId = {item.id} className = {"priorityButton " + (item.id == this.props.selectedId) ? "priorityButtonActive" : ""}>{item.name}</li>
+            <li key = {item.id} data-priorityid = {item.id} className = {"priorityButton " + ((item.id == this.props.selectedId) ? "priorityButtonActive" : "")} onClick = {this.selectPriority}>{item.name}</li>
         );
+        priorities.push(<li key = {priorities.length + 1} className = "priorityButton"><img src = {logo} /></li>);
         return(
             <div className = "priorityMenu">
                <div className = "priorityLogo"></div>

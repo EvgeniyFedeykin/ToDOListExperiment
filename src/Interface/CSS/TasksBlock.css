@@ -1,0 +1,48 @@
+.priorityMenu {
+    height: 100%;
+    width: 16%;
+    padding-left: 2%;
+    padding-top: 2.8%;
+    background: transparent linear-gradient(14deg, #56CCF2 0%, #2F80ED 100%) 0% 0% no-repeat padding-box;
+    opacity: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: left;
+}
+
+.priorityLogo {
+    height: 7%;
+    width: 45%;
+    background: transparent url('../../Data/Images/LoginBlockLogo.svg') 0% 0% no-repeat padding-box;
+    background-size: contain;
+    opacity: 1;
+}
+
+.priorityList {
+    text-align: left;
+    
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    opacity: 1;
+    list-style: none;
+    padding: 0px;
+}
+
+.priorityButton {
+    font: sf-pro-text;
+    font-size: 19px;
+    margin-bottom: 1.4%;
+    user-select: none;
+    transition: 0.3s;
+}
+
+.priorityButton:hover {
+    cursor: pointer;
+}
+
+
+.priorityButtonActive {
+    text-decoration: underline;
+    text-decoration-style: solid;
+}

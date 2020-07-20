@@ -34,7 +34,7 @@ class LoginPage extends Component {
                     <LoginBLockPasswordField placeholderText = "Password" />
                 </div>
                 <a data-path = "/forgot_password" onClick = {this.setRoutePath} className = "LoginBlockLink">Forgot password</a>
-                <button className = "LoginButton">Sign In</button>
+                <button className = "LoginButton" data-path = "/tasks" onClick = {this.setRoutePath}>Sign In</button>
                 <a data-path = "/sign_up" className = "LoginBlockLink" onClick = {this.setRoutePath}>Sign Up</a>
                 <TermsOfUseFooter setRoutePath = {this.setRoutePath}/>
             </div>

@@ -1,10 +1,33 @@
 import { combineReducers } from 'redux';
 
+const priorities = [
+    {
+        id : 0,
+        name: "All"
+    },
+    {
+        id : 1,
+        name: "Urgently"
+    },
+    {
+        id : 2,
+        name: "Important"
+    },
+    {
+        id : 3,
+        name: "Normal"
+    },
+    {
+        id : 4,
+        name: "Neutral"
+    }
+];
 
 const Reducers = combineReducers(
     {
         RoutePath,
-        tasksPriorities              
+        tasksPriorities,
+        selectedPriority              
     }
 );
 
@@ -25,7 +48,9 @@ function RoutePath(state = { path: "/login", previousPath: "/login" }, action) {
     }
 }
 
-function tasksPriorities(state = [], action) {
+
+
+function tasksPriorities(state = priorities, action) {
     
     switch(action.type) {
         case "tasksPriorities":
@@ -35,7 +60,7 @@ function tasksPriorities(state = [], action) {
     }
 }
 
-export function selectedPriority(state = 1, action) {
+export function selectedPriority(state = 0, action) {
     switch(action.type) {
         case "selectPriority" :
             return action.priorityId;
