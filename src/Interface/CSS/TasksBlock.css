@@ -1,4 +1,4 @@
-.priorityMenu {
+.priorityMenu__priorityMenu {
     height: 100%;
     width: 16%;
     padding-left: 2%;
@@ -11,7 +11,7 @@
     align-items: left;
 }
 
-.priorityLogo {
+.priorityMenu__priorityLogo {
     height: 7%;
     width: 45%;
     background: transparent url('../../Data/Images/LoginBlockLogo.svg') 0% 0% no-repeat padding-box;
@@ -19,7 +19,7 @@
     opacity: 1;
 }
 
-.priorityList {
+.priorityMenu__priorityList {
     text-align: left;
     
     letter-spacing: 0px;
@@ -29,7 +29,7 @@
     padding: 0px;
 }
 
-.priorityButton {
+.priorityMenu__priorityButton {
     font: sf-pro-text;
     font-size: 19px;
     margin-bottom: 1.4%;
@@ -37,12 +37,41 @@
     transition: 0.3s;
 }
 
-.priorityButton:hover {
+.priorityMenu__priorityButton:hover {
     cursor: pointer;
 }
 
 
-.priorityButtonActive {
+.priorityMenu__priorityButtonActive {
     text-decoration: underline;
     text-decoration-style: solid;
+}
+
+.priorityMenu__priorityOrder {
+    display: flex;
+    width: 45%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    color: #FFFFFF;
+    font-size: 21px;
+    margin-top: 5px;
+    margin-bottom: 0px;
+    letter-spacing: 1px;
+    user-select: none;
+}
+
+.priorityMenu__orderButton {
+    height: 8px;
+    width: 14px;
+}
+
+.priorityMenu__orderButton:hover {
+    cursor: pointer;
+    
+}
+
+.priorityMenu__orderButtonUp {
+    transform: rotate(180deg);
 }

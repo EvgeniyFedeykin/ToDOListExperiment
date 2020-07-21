@@ -20,3 +20,11 @@ export function selectPriority(priorityId) {
         priorityId
     }
 }
+
+export function changePriorityOrder(order) {
+    return {
+        type: "PriorityOrder",
+        order
+    }
+}
+

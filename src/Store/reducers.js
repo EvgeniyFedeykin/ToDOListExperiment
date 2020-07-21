@@ -27,7 +27,8 @@ const Reducers = combineReducers(
     {
         RoutePath,
         tasksPriorities,
-        selectedPriority              
+        selectedPriority,
+        priorityOrder          
     }
 );
 
@@ -64,6 +65,15 @@ export function selectedPriority(state = 0, action) {
     switch(action.type) {
         case "selectPriority" :
             return action.priorityId;
+        default:
+            return state;
+    }
+}
+
+export function priorityOrder(state = "desc", action) {
+    switch(action.type) {
+        case "PriorityOrder" :
+            return action.order;
         default:
             return state;
     }
