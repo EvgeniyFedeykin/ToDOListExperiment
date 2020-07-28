@@ -1,12 +1,22 @@
 import React, {Component} from "react";
 import { connect } from 'react-redux';
 
+import upArrow from "../../../Data/Images/ic_arrow_up_grey@2x.png";
+import downArrow from "../../../Data/Images/ic_arrow_down_grey@2x.png";
+
 import Task from "./Task/Task";
 
 class Task extends Component {
     constructor(props) {
         super(props);
         this.state = {isOpen : false};
+        this.expand = this.expand.bind(this);
+    }
+
+    expand = () => {
+        this.setState({
+            isOpen : !this.state.isOpen
+        })
     }
 
     render() {
@@ -14,8 +24,43 @@ class Task extends Component {
             <Task key = {item.id} task = {item}/>
         });
         const tasksDate = new Date(this.props.date);
+        const now = new Date();
+
         let day = "";
         let month = "";
+
+        if(tasksDate.getFullYear() == now.getFullYear() && tasksDate.getMonth() == now.getMonth() && tasksDate.getDate() == now.getDate()) {
+            day = "Today";
+        } else if(tasksDate.getFullYear() == now.getFullYear() && tasksDate.getMonth() == now.getMonth() && tasksDate.getDate() == (now.getDate() + 1)) {
+            day = "Tomorrow";
+        } else if(tasksDate.getFullYear() == now.getFullYear() && tasksDate.getMonth() == now.getMonth() && tasksDate.getDate() == (now.getDate() - 1)) {
+            day = "Yesterday";
+        } else {
+            switch(tasksDate.getDay()) {
+                case(0): 
+                    day = "Sunday"
+                    break;
+                case(1): 
+                    day = "Monday"
+                    break;
+                case(2): 
+                    day = "Tuesday"
+                    break;
+                case(3): 
+                    day = "Wednesday"
+                    break;
+                case(4): 
+                    day = "Thursday"
+                    break;
+                case(5): 
+                    day = "Friday"
+                    break;
+                case(6): 
+                    day = "Saturday"
+                    break;
+            }
+        }
+
         switch(tasksDate.getMonth()) {
             case(0): 
                 month = "January";
@@ -55,10 +100,10 @@ class Task extends Component {
                 break;
         }
         return (
-            <div>
-                <div>
-                    <span>{day + ", " + month}</span>
-                    <img />
+            <div className = "TaskForDay__MainDiv">
+                <div  className = "TaskForDay__Title">
+                    <span>{day + ", " + month + " " + tasksDate.getDate()}</span>
+                    <img className = {"priorityMenu__orderButton" + (isOpen) ? " priorityMenu__orderButtonUp" : ""} src = {upArrow}/>
                 </div>
                 {(this.state.isOpen) ? tasks : ""}
             </div>

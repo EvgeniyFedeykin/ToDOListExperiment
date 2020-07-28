@@ -6,6 +6,7 @@ import { Redirect } from "react-router-dom";
 import * as actionCreators from "../../Store/ActionCreators";
 
 import PriorityMenu from "./PriorityMenu/PrioritiMenu";
+import TaskArea from "./TasksArea/TasksArea";
 
 
 class TasksBlock extends Component {
@@ -21,6 +22,7 @@ class TasksBlock extends Component {
             <div className = "MainClass">
                 {(this.path != this.props.path) ? <Redirect to = {this.props.path} /> : <span />}
                 <PriorityMenu />
+                <TaskArea />
             </div>
         )
     }

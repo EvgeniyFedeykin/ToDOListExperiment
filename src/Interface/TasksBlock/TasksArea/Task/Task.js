@@ -12,27 +12,21 @@ class Task extends Component {
 
     render() {
         return (
-            <div>
-                <div />
-                <div>
-                    <input type = "text" value = {this.props.task.title}/>
-                    <input type = "text" value = {this.props.task.description}/>
-                    <div>
-                        <div>
-                            <img />
-                            <SelectTaskPriority />
-                        </div>
-                        <div>
-                            <img />
-                            <SelectTaskTime />
-                        </div>
-                        <div>
-                            <img />
-                            <SelectTaskNotificationTime />
-                        </div>
+            <div className = "Task__TaskDiv">
+                <div className = "Task__CheckBox"/>
+                <div className = "Task__TaskBody">
+                    <input type = "text" value = {this.props.task.title} className = "Task__TaskTitleInput"/>
+                    <input type = "text" value = {this.props.task.description} className = "Task__TaskDescriptionInput"/>
+                    <div className = "Task__ButtonBlock">
+                        <SelectTaskPriority />
+                        <SelectTaskTime />
+                        <SelectTaskNotificationTime />
                     </div>
                 </div>
+                <div className = "Task__DeleteButton"/>
             </div>
         )
     }
 }
+
+export default Task;
