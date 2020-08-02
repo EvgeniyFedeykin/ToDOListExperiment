@@ -1,0 +1,8 @@
+{
+    "host": "0.0.0.0",
+    "port": 8000,
+    "dbhost": "127.0.0.0",
+    "dbuser": "3306",
+    "database": "ToDoListServer",
+    "dbpassword": "12345"
+}

@@ -6,6 +6,11 @@ export function setRoutePath(path, previousPath) {
     }
 }
 
+export function ASYNC_RequestPriority() {
+    return {
+        type: "ASYNC_RequestPriority"
+    }
+}
 
 export function tasksPriorities(priorities) {
     return {
@@ -25,6 +30,28 @@ export function changePriorityOrder(order) {
     return {
         type: "PriorityOrder",
         order
+    }
+}
+
+export function tasksPool(tasks) {
+    return {
+        type: "tasksPool",
+        tasks
+    }
+}
+
+export function ASYNC_tasksPool(user) {
+    return {
+        type: "ASYNC_tasksPool",
+        user
+    }
+}
+
+export function ASYNC_login(login, password) {
+    return {
+        type: "ASYNC_login",
+        login,
+        password
     }
 }
 

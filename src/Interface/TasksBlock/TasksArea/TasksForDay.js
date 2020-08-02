@@ -6,7 +6,7 @@ import downArrow from "../../../Data/Images/ic_arrow_down_grey@2x.png";
 
 import Task from "./Task/Task";
 
-class Task extends Component {
+class TasksForDay extends Component {
     constructor(props) {
         super(props);
         this.state = {isOpen : false};
@@ -110,3 +110,5 @@ class Task extends Component {
         )
     }
 }
+
+export default TasksForDay;

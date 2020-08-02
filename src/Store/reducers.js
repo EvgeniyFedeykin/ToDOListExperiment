@@ -78,3 +78,12 @@ export function priorityOrder(state = "desc", action) {
             return state;
     }
 }
+
+export function tasksPool(state = [], action) {
+    switch(action.type) {
+        case "tasksPool" :
+            return action.tasks;
+        default:
+            return state;
+    }
+}
