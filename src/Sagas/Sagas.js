@@ -57,8 +57,11 @@ function* Login(action){
       })
     });
     if (response.ok) { 
-      let json = response.json();
-
+      if(!_.isEmpty(json.email)) {
+        let json = response.json();
+        localStorage.setItem(json.email, "true");
+        yield put(actionCreators.setRoutePath("/tasks", "/login"));
+      }
     } else {
       throw("Ошибка HTTP: " + response.status);
     }
@@ -68,7 +71,7 @@ function* Login(action){
 }
 
 function* watchSignUp(){
-  yield takeEvery('ASYNC_login',SignUp);
+  yield takeEvery('ASYNC_signUp',SignUp);
 }
 
 function* SignUp(action){
@@ -81,8 +84,11 @@ function* SignUp(action){
       })
     });
     if (response.ok) { 
+
       let json = response.json();
-      
+      //localStorage.setItem(json.email, "true");
+      yield put(actionCreators.setRoutePath("/login", "/sign_up"));
+
     } else {
       throw("Ошибка HTTP: " + response.status);
     }
@@ -103,7 +109,8 @@ function* rootSaga() {
     yield all([
       watchRequestPriority(),
       watchTasksPool(),
-      watchLogin()
+      watchLogin(),
+      watchSignUp()
     ])
   }
 

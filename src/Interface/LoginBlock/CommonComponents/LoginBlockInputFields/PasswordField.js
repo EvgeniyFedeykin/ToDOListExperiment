@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 function LoginBLockPasswordField(props) {
     return (
-        <input type = "password" className="LoginBlockInput" placeholder = {props.placeholderText}/>
+        <input id = {props.id} type = "password" className="LoginBlockInput" placeholder = {props.placeholderText}/>
     )
 }
 

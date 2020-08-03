@@ -21,17 +21,22 @@ class SignUpPage extends Component {
         this.props.setPath(e.target.dataset.path, this.props.path);
     }
 
+    checkCreds = () => {
+        console.log(document.getElementById('signUpEmailField').value);
+        this.props.sendCreds(document.getElementById('signUpEmailField').value, document.getElementById('signUpPasswField').value);
+    }
+
     render() {
         return(
             <div className = "LoginPage">
                 {(this.path != this.props.path) ? <Redirect to = {this.props.path} /> : <span />}
                 <h3 className = "LoginBlockHeader">Sign Up</h3>
                 <div className = "LoginBlockInputBlock">
-                    <LoginBLockEmailField />
-                    <LoginBLockPasswordField placeholderText = "Password" />
+                    <LoginBLockEmailField id = "signUpEmailField" />
+                    <LoginBLockPasswordField id = "signUpPasswField" placeholderText = "Password" />
                     <LoginBLockPasswordField placeholderText = "Confirm Password" />
                 </div>
-                <button className = "LoginButton" data-path = "/login" onClick = {this.setRoutePath}>Sign Up</button>
+                <button className = "LoginButton" data-path = "/login" onClick = {this.checkCreds}>Sign Up</button>
                 <span>I already have an account. <a data-path = "/login"  onClick = {this.setRoutePath} className = "LoginBlockLink">Sign in</a></span>
                 <TermsOfUseFooter setRoutePath = {this.setRoutePath}/>
             </div>
@@ -48,7 +53,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-       setPath: (path, previousPath) => dispatch(actionCreators.setRoutePath(path, previousPath))
+       setPath: (path, previousPath) => dispatch(actionCreators.setRoutePath(path, previousPath)),
+       sendCreds:(login, password) => dispatch(actionCreators.ASYNC_signUp(login, password))
     }
 }
 

@@ -55,3 +55,10 @@ export function ASYNC_login(login, password) {
     }
 }
 
+export function ASYNC_signUp(login, password) {
+    return {
+        type: "ASYNC_signUp",
+        login,
+        password
+    }
+}
