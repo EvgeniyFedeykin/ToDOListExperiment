@@ -7,7 +7,9 @@ const config = require("../../server/config.json");
 
 const delay = (ms) => new Promise(res => setTimeout(res, ms))
 
-const url = config.host + config.port;
+//const url = "http://" + config.host + ":" + config.port;
+
+const url = "http://localhost:" + config.port;
 
 function* watchRequestPriority(){
   yield takeEvery('ASYNC_RequestPriority',requestPriority);
@@ -76,12 +78,20 @@ function* watchSignUp(){
 
 function* SignUp(action){
   try {
+    console.log(url);
+    console.log(action.login);
+    console.log(action.password);
+    let reqBody = {
+      "email": action.login,
+      "password": action.password
+    };
+    console.log(JSON.stringify(reqBody));
     let response = yield fetch(url + "/signup", {
       method: 'POST',
-      body: JSON.stringify({
-        login: action.login,
-        password: action.password
-      })
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(reqBody)
     });
     if (response.ok) { 
 

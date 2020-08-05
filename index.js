@@ -6,6 +6,45 @@ const express = require('express');
 const https = require('https');
 const http = require('http');
 const app = express();
+const cors = require('cors');
+
+const mysql = require("mysql2");
+
+const _ = require('lodash');
+
+const bodyParser = require("body-parser");
+const urlencodedParser = bodyParser.urlencoded({extended: true});
+
+const corsOptions = {
+    origin: 'http://localhost',
+    optionsSuccessStatus: 200
+  }
+
+const connection = mysql.createConnection({
+    host: config.dbhost,
+    user: config.dbuser,
+    database: config.database,
+    password: config.dbpassword
+});
+
+connection.connect(function(err){
+    console.log({
+        host: config.dbhost,
+        user: config.dbuser,
+        database: config.database,
+        password: config.dbpassword
+    });
+    if (err) {
+      return console.error("Ошибка: " + err.message);
+    }
+    else{
+      console.log("Подключение к серверу MySQL успешно установлено");
+    }
+ });
+
+  app.use(cors());
+  //app.use(urlencodedParser);
+  app.use(bodyParser.json());
 
 //https.createServer(options, app).listen(443)
 
@@ -28,7 +67,12 @@ app.get('/login', (req, res) => {
 });
 
 app.post('/signup', (req, res) => {
-    const sql = `INSERT INTO users values(${req.body.email, req.body.password})`;
+    console.log("сработало");
+    console.log(req.body);
+    console.log(req.body.email);
+    console.log(req.body.password);
+    const sql = `INSERT INTO users values(1, ${req.body.email}, ${req.body.password})`;
+    console.log(sql);
     connection.query(sql,
         function(err, results, fields) {
             console.log(err);
@@ -44,11 +88,11 @@ app.post('/signup', (req, res) => {
         connection.end();
 });
 
-app.listen(config.port, config.host, (err) => {
+app.listen(config.port, (err) => {
     if (err) {
         return console.log('something bad happened', err)
     }
-    console.log(`server is listening on ${config.port}`)
+    console.log(`server is listening on http://localhost:${config.port}`)
 })
 
 /*
