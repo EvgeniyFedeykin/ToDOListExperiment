@@ -3,6 +3,6 @@
     "port": 8000,
     "dbhost": "localhost",
     "dbuser": "root",
-    "database": "MySQL80",
+    "database": "todolistserver",
     "dbpassword": "12345"
 }
