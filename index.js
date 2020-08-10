@@ -51,21 +51,29 @@ connection.connect(function(err){
 //https.createServer(options, app).listen(443)
 
 
-app.get('/login', (req, res) => {
-    const sql = `SELECT * FROM users where email = "${req.body.email}" and password = "${req.body.password}"`;
-    connection.query(sql,
+app.post('/login', (req, res) => {
+    try {
+        const sql = `SELECT * FROM users where email = "${req.body.email}" and password = "${req.body.password}"`;
+        console.log(sql);
+        connection.query(sql,
         function(err, results, fields) {
             console.log(err);
             console.log(results); // собственно данные
-            console.log(fields); // мета-данные полей
+            //console.log(fields); // мета-данные полей
             if(!_.isEmpty(err)) {
-                res.status(500).send("Login failed");
+                throw err;
             }
             if(!_.isEmpty(results)) {
                 res.status(200).send(results);
-            } 
+            } else {
+                throw "No users found";
+            }
         });
-        connection.end();
+    } catch(e) {
+        console.log("ошибка" + e);
+        res.status(500).send(e);
+    }
+        //connection.end();
 });
 
 app.post('/signup', (req, res, next) => {
@@ -97,7 +105,7 @@ app.post('/signup', (req, res, next) => {
         res.status(500).send(e);
     }
 }, (req, res) => {
-    //try {
+    try {
         console.log("ид второе" + res.locals.id);
         console.log(req.body);
         console.log(req.body.email);
@@ -120,10 +128,10 @@ app.post('/signup', (req, res, next) => {
             } 
         });
         //connection.end();
-    //} catch(e) {
-    //    console.log("ошибка" + e);
-    //    res.status(500).send(e);
-    //}
+    } catch(e) {
+        console.log("ошибка" + e);
+        res.status(500).send(e);
+    }
 });
 
 app.listen(config.port, (err) => {

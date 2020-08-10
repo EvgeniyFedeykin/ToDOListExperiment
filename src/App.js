@@ -30,8 +30,8 @@ import TasksBlock from "../src/Interface/TasksBlock/TaskBlock";
 class Application extends Component {
     constructor(props) {
         super(props);
-        this.isLogged = false;
-        (this.isLogged) ? this.props.setPath("/terms_of_use", "/login") : this.props.setPath("/login", "/login");
+        this.isLogged = localStorage.getItem("loggedUser");
+        (this.isLogged) ? this.props.setPath("/tasks", "/login") : this.props.setPath("/login", "/login");
     }
 
 

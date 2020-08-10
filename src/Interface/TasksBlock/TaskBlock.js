@@ -5,6 +5,8 @@ import { Redirect } from "react-router-dom";
 
 import * as actionCreators from "../../Store/ActionCreators";
 
+const _ = require('lodash');
+
 import PriorityMenu from "./PriorityMenu/PrioritiMenu";
 import TaskArea from "./TasksArea/TasksArea";
 

@@ -52,23 +52,29 @@ function* watchLogin(){
 function* Login(action){
   try {
     let response = yield fetch(url + "/login", {
-      method: 'GET',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({
-        login: action.login,
-        password: action.password
+        "email": action.login,
+        "password": action.password
       })
     });
     if (response.ok) { 
-      if(!_.isEmpty(json.email)) {
-        let json = response.json();
-        localStorage.setItem(json.email, "true");
-        yield put(actionCreators.setRoutePath("/tasks", "/login"));
-      }
+      //if(!_.isEmpty(json.email)) {
+        let json = yield response.json();
+        console.log(json);
+        if(!_.isEmpty(json[0].email)) {
+          localStorage.setItem("loggedUser", true);
+          console.log("Пользователь " + json[0].email  + " залогинен: " + localStorage.getItem("loggedUser"));
+          yield put(actionCreators.setRoutePath("/tasks", "/login"));
+        }
     } else {
       throw("Ошибка HTTP: " + response.status);
     }
   } catch(error) {
-
+    console.log(error);
   }
 }
 
