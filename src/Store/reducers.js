@@ -28,7 +28,8 @@ const Reducers = combineReducers(
         RoutePath,
         tasksPriorities,
         selectedPriority,
-        priorityOrder          
+        priorityOrder,
+        selectedTask          
     }
 );
 
@@ -83,6 +84,15 @@ export function tasksPool(state = [], action) {
     switch(action.type) {
         case "tasksPool" :
             return action.tasks;
+        default:
+            return state;
+    }
+}
+
+export function selectedTask(state = "", action) {
+    switch(action.type) {
+        case "selectedTask" :
+            return action.taskId;
         default:
             return state;
     }

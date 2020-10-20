@@ -40,6 +40,13 @@ export function tasksPool(tasks) {
     }
 }
 
+export function selectTask(taskId) {
+    return {
+        type: "selectedTask",
+        taskId
+    }
+}
+
 export function ASYNC_tasksPool(user) {
     return {
         type: "ASYNC_tasksPool",

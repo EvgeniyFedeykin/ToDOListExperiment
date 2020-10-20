@@ -1,6 +1,8 @@
 import React, {Component} from "react";
 import { connect } from 'react-redux';
 
+import * as actionCreators from "../../../../Store/ActionCreators";
+
 import SelectTaskTime from "./SelectTaskTime";
 import SelectTaskPriority from "./SelectTaskPriority";
 import SelectTaskNotificationTime from "./SelectTaskNotificationTime";
@@ -10,9 +12,13 @@ class Task extends Component {
         super(props);
     }
 
+    selectTask = (e) => {
+        this.props.selectTask(e.target.dataset.taskid);
+    }
+
     render() {
         return (
-            <div className = "Task__TaskDiv">
+            <div data-taskid = {this.props.task.id}  className = "Task__TaskDiv" onClick = {this.selectTask}>
                 <div className = "Task__CheckBox"/>
                 <div className = "Task__TaskBody">
                     <input type = "text" value = {this.props.task.title} className = "Task__TaskTitleInput"/>
@@ -29,4 +35,21 @@ class Task extends Component {
     }
 }
 
-export default Task;
+const mapStateToProps = (state) => {
+    return {
+        activeTask: state.selectedTask
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+       selectTask: (id) => dispatch(actionCreators.selectTask(id))
+    }
+}
+
+const containerTask = connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Task);
+
+export default containerTask;
