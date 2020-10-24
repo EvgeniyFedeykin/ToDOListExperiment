@@ -13,7 +13,7 @@ class Task extends Component {
     }
 
     selectTask = (e) => {
-        this.props.selectTask(e.target.dataset.taskid);
+        if(this.props.activeTask != this.props.task.id) this.props.selectTask(e.target.dataset.taskid);
     }
 
     render() {
