@@ -24,7 +24,7 @@ class Task extends Component {
                     <input type = "text" value = {this.props.task.title} className = "Task__TaskTitleInput"/>
                     <input type = "text" value = {this.props.task.description} className = "Task__TaskDescriptionInput"/>
                     <div className = "Task__ButtonBlock">
-                        <SelectTaskPriority />
+                        <SelectTaskPriority task = {this.props.task}/>
                         <SelectTaskTime />
                         <SelectTaskNotificationTime />
                     </div>

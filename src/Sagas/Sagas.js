@@ -49,6 +49,14 @@ function* watchLogin(){
   yield takeEvery('ASYNC_login',Login);
 }
 
+function* watchSignUp(){
+  yield takeEvery('ASYNC_signUp',SignUp);
+}
+
+function* watchUpdateTask(){
+  yield takeEvery('ASYNC_updateTask', UpdateTask);
+}
+
 function* Login(action){
   try {
     let response = yield fetch(url + "/login", {
@@ -76,10 +84,6 @@ function* Login(action){
   } catch(error) {
     console.log(error);
   }
-}
-
-function* watchSignUp(){
-  yield takeEvery('ASYNC_signUp',SignUp);
 }
 
 function* SignUp(action){
@@ -119,6 +123,10 @@ function* tasksPool(action) {
   } catch (error) {
       console.log("")
   }
+}
+
+function* UpdateTask(action) {
+  
 }
 
 function* rootSaga() {

@@ -69,3 +69,10 @@ export function ASYNC_signUp(login, password) {
         password
     }
 }
+
+export function ASYNC_updateTask(Task) {
+    return {
+        type: "ASYNC_updateTask",
+        Task
+    }
+}
